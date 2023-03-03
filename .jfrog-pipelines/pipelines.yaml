@@ -1,8 +1,8 @@
 pipelines:
-  - name:           <string>
+  - name: customImage
     steps:
-      - name:       <string>
-        type:       Bash
+      - name: customImage
+        type: Bash
         configuration:
           runtime:           
             type: image
