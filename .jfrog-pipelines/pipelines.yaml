@@ -1,0 +1,16 @@
+pipelines:
+  - name:           <string>
+    steps:
+      - name:       <string>
+        type:       Bash
+        configuration:
+          runtime:           
+            type: image
+            image:
+              custom:
+                name: ubuntu
+                tag: latest
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
