@@ -15,5 +15,22 @@ pipelines:
 #                 tag: latest
         execution:
           onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
+            - node -v
+  - name: customImage
+    steps:
+      - name: customImage2
+        type: Bash
+        configuration:
+          inputSteps: customImage
+          runtime:           
+            type: image
+            image:
+              auto:
+                language: node
+                version: "12"
+#               custom:
+#                 name: ubuntu
+#                 tag: latest
+        execution:
+          onExecute:
+            - node -v
