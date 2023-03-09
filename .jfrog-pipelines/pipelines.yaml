@@ -24,12 +24,12 @@ pipelines:
           runtime:           
             type: image
             image:
-              auto:
-                language: node
-                version: "12"
-#               custom:
-#                 name: ubuntu
-#                 tag: latest
+#               auto:
+#                 language: node
+#                 version: "12"
+              custom:
+                name: node
+                tag: latest
         execution:
           onExecute:
             - node -v
