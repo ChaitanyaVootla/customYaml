@@ -1,7 +1,7 @@
 pipelines:
   - name: customImage
     steps:
-      - name: customImage
+      - name: autoImage
         type: Bash
         configuration:
           runtime:           
@@ -10,25 +10,33 @@ pipelines:
               auto:
                 language: node
                 version: "16"
-#               custom:
-#                 name: ubuntu
-#                 tag: latest
         execution:
           onExecute:
             - node -v
-      - name: customImage2
+      - name: customNodeImage
         type: Bash
         configuration:
           inputSteps:
-            - name: customImage
+            - name: autoImage
           runtime:           
             type: image
             image:
-#               auto:
-#                 language: node
-#                 version: "12"
               custom:
                 name: node
+                tag: latest
+        execution:
+          onExecute:
+            - node -v
+      - name: customUbuntuImage
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: customNodeImage
+          runtime:           
+            type: image
+            image:
+              custom:
+                name: ubuntu
                 tag: latest
         execution:
           onExecute:
