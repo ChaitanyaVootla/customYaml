@@ -16,8 +16,6 @@ pipelines:
         execution:
           onExecute:
             - node -v
-  - name: customImage
-    steps:
       - name: customImage2
         type: Bash
         configuration:
