@@ -55,7 +55,7 @@ pipelines:
             image:
               custom:
                 name: node
-                tag: "$node_version"
+                tag: 14.21.3
         execution:
           onExecute:
             - node -v
