@@ -42,6 +42,10 @@ pipelines:
           onExecute:
             - node -v
   - name: customNodeImage
+    configuration:
+      environmentVariables:
+        readOnly:
+          node_version: "14.21.3"
     steps:
       - name: customNodeImage
         type: Bash
@@ -51,7 +55,7 @@ pipelines:
             image:
               custom:
                 name: node
-                tag: 14.21.3
+                tag: $node_version
         execution:
           onExecute:
             - node -v
