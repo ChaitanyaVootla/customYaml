@@ -10,7 +10,7 @@ pipelines:
       - name: autoImage
         type: Bash
         configuration:
-          inputSteps:
+          inputResources:
             - name: custom_git
           runtime:           
             type: image
