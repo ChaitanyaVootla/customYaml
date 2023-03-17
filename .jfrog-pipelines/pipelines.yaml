@@ -69,7 +69,7 @@ pipelines:
             image:
               custom:
                 name: ubuntu
-                tag: latest
+                tag: bionic
         execution:
           onExecute:
             - node -v
