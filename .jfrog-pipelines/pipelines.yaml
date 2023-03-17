@@ -66,13 +66,11 @@ pipelines:
       - name: build_go
         type: GoBuild
         configuration:
-          inputSteps:
-            - name: customNodeImage
+          inputResources:
+            - name: custom_git
           sourceLocation: .
           resolverRepo: go-virtual
           noRegistry: true
-          inputResources:
-            - name: custom_git
           integrations:
             - name: art
   - name: customNodeImage
