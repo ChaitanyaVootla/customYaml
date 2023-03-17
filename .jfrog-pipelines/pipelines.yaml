@@ -35,34 +35,34 @@ pipelines:
         execution:
           onExecute:
             - node -v
-      - name: ubuntu_latest
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: customNodeImage
-          runtime:           
-            type: image
-            image:
-              custom:
-                name: ubuntu
-                tag: latest
-        execution:
-          onExecute:
-            - node -v
-      - name: ubuntu_bionic
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: customNodeImage
-          runtime:           
-            type: image
-            image:
-              custom:
-                name: ubuntu
-                tag: bionic
-        execution:
-          onExecute:
-            - node -v
+      # - name: ubuntu_latest
+      #   type: Bash
+      #   configuration:
+      #     inputSteps:
+      #       - name: customNodeImage
+      #     runtime:           
+      #       type: image
+      #       image:
+      #         custom:
+      #           name: ubuntu
+      #           tag: latest
+      #   execution:
+      #     onExecute:
+      #       - node -v
+      # - name: ubuntu_bionic
+      #   type: Bash
+      #   configuration:
+      #     inputSteps:
+      #       - name: customNodeImage
+      #     runtime:           
+      #       type: image
+      #       image:
+      #         custom:
+      #           name: ubuntu
+      #           tag: bionic
+      #   execution:
+      #     onExecute:
+      #       - node -v
       - name: build_go
         type: GoBuild
         configuration:
