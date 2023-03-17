@@ -69,6 +69,8 @@ pipelines:
           inputSteps:
             - name: customNodeImage
           sourceLocation: .
+          resolverRepo: go-virtual
+          noRegistry: true
           inputResources:
             - name: custom_git
           integrations:
