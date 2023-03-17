@@ -71,6 +71,8 @@ pipelines:
           sourceLocation: .
           inputResources:
             - name: custom_git
+          integrations:
+            - name: art
   - name: customNodeImage
     configuration:
       environmentVariables:
