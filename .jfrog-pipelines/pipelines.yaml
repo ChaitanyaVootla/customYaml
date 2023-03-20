@@ -35,35 +35,7 @@ pipelines:
         execution:
           onExecute:
             - node -v
-      # - name: ubuntu_latest
-      #   type: Bash
-      #   configuration:
-      #     inputSteps:
-      #       - name: customNodeImage
-      #     runtime:           
-      #       type: image
-      #       image:
-      #         custom:
-      #           name: ubuntu
-      #           tag: latest
-      #   execution:
-      #     onExecute:
-      #       - node -v
-      # - name: ubuntu_bionic
-      #   type: Bash
-      #   configuration:
-      #     inputSteps:
-      #       - name: customNodeImage
-      #     runtime:           
-      #       type: image
-      #       image:
-      #         custom:
-      #           name: ubuntu
-      #           tag: bionic
-      #   execution:
-      #     onExecute:
-      #       - node -v
-      - name: build_go
+      - name: go_build
         type: GoBuild
         configuration:
           inputResources:
@@ -73,6 +45,15 @@ pipelines:
           noRegistry: true
           integrations:
             - name: art
+      - name: npm_build
+        type: NpmBuild
+        configuration:
+          repositoryName: npm-virtual
+          sourceLocation: .
+          integrations:
+            - name:  art
+          inputResources:
+            - name: custom_git 
   - name: customNodeImage
     configuration:
       environmentVariables:
