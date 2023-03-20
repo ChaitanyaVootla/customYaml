@@ -48,7 +48,6 @@ pipelines:
       - name: npm_build
         type: NpmBuild
         configuration:
-          sourceLocation: .
           integrations:
             - name:  art
           inputResources:
