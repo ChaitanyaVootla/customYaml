@@ -7,47 +7,49 @@ resources:
 pipelines:
   - name: mixed
     steps:
-      - name: autoImage
-        type: Bash
-        configuration:
-          inputResources:
-            - name: custom_git
-          runtime:           
-            type: image
-            image:
-              auto:
-                language: node
-                version: "16"
-        execution:
-          onExecute:
-            - node -v
-      - name: customNodeImage
-        type: Bash
-        configuration:
-          inputResources:
-            - name: custom_git
-          runtime:           
-            type: image
-            image:
-              custom:
-                name: node
-                tag: latest
-        execution:
-          onExecute:
-            - node -v
-      - name: go_build
-        type: GoBuild
-        configuration:
-          inputResources:
-            - name: custom_git
-          sourceLocation: .
-          resolverRepo: go-virtual
-          noRegistry: true
-          integrations:
-            - name: art
+      # - name: autoImage
+      #   type: Bash
+      #   configuration:
+      #     inputResources:
+      #       - name: custom_git
+      #     runtime:           
+      #       type: image
+      #       image:
+      #         auto:
+      #           language: node
+      #           version: "16"
+      #   execution:
+      #     onExecute:
+      #       - node -v
+      # - name: customNodeImage
+      #   type: Bash
+      #   configuration:
+      #     inputResources:
+      #       - name: custom_git
+      #     runtime:           
+      #       type: image
+      #       image:
+      #         custom:
+      #           name: node
+      #           tag: latest
+      #   execution:
+      #     onExecute:
+      #       - node -v
+      # - name: go_build
+      #   type: GoBuild
+      #   configuration:
+      #     inputResources:
+      #       - name: custom_git
+      #     sourceLocation: .
+      #     resolverRepo: go-virtual
+      #     noRegistry: true
+      #     integrations:
+      #       - name: art
       - name: npm_build
         type: NpmBuild
         configuration:
+          repositoryName: npm-virtual
+          sourceLocation: .
           integrations:
             - name:  art
           inputResources:
