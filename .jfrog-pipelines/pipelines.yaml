@@ -86,3 +86,21 @@ pipelines:
         execution:
           onExecute:
             - node -v
+  - name: affinity
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          affinityGroup: "dagroup"
+        execution:
+          onExecute:
+            - echo "step_1"
+      - name: step_2
+        type: Bash
+        configuration:
+          affinityGroup: "dagroup"
+          inputResources:
+            - name: step_1
+        execution:
+          onExecute:
+            - echo "step_2"
