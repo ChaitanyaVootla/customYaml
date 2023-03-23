@@ -104,3 +104,12 @@ pipelines:
         execution:
           onExecute:
             - echo "step_2"
+      - name: step_3
+        type: Bash
+        configuration:
+          affinityGroup: "dagroup"
+          inputSteps:
+            - name: step_2
+        execution:
+          onExecute:
+            - echo "step_3"
