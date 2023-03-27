@@ -12,7 +12,7 @@ pipelines:
       #   configuration:
       #     inputResources:
       #       - name: custom_git
-      #     runtime:           
+      #     runtime:
       #       type: image
       #       image:
       #         auto:
@@ -26,7 +26,7 @@ pipelines:
       #   configuration:
       #     inputResources:
       #       - name: custom_git
-      #     runtime:           
+      #     runtime:
       #       type: image
       #       image:
       #         custom:
@@ -53,7 +53,7 @@ pipelines:
           integrations:
             - name:  art
           inputResources:
-            - name: custom_git 
+            - name: custom_git
   - name: customNodeImage
     configuration:
       environmentVariables:
@@ -63,7 +63,7 @@ pipelines:
       - name: customNodeImage
         type: Bash
         configuration:
-          runtime:           
+          runtime:
             type: image
             image:
               custom:
@@ -77,7 +77,7 @@ pipelines:
       - name: customUbuntuImage
         type: Bash
         configuration:
-          runtime:           
+          runtime:
             type: image
             image:
               custom:
@@ -99,7 +99,6 @@ pipelines:
             - echo $shared_workspace
             - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
-            - sleep 120
       - name: step_2
         type: Bash
         configuration:
@@ -112,7 +111,6 @@ pipelines:
             - echo $shared_workspace
             - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
-            - sleep 120
       - name: step_3
         type: Bash
         configuration:
