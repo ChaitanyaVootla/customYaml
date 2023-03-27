@@ -95,6 +95,8 @@ pipelines:
         execution:
           onExecute:
             - echo "step_1"
+            - echo "Running " $pipeline_name "|" $step_name > $shared_workspace/myoutput.txt
+            - cat $shared_workspace/myoutput.txt
       - name: step_2
         type: Bash
         configuration:
@@ -104,6 +106,7 @@ pipelines:
         execution:
           onExecute:
             - echo "step_2"
+            - cat $shared_workspace/myoutput.txt
       - name: step_3
         type: Bash
         configuration:
