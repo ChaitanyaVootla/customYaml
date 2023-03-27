@@ -99,6 +99,7 @@ pipelines:
             - echo $shared_workspace
             - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
+            - sleep 10000
       - name: step_2
         type: Bash
         configuration:
@@ -111,6 +112,7 @@ pipelines:
             - echo $shared_workspace
             - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
+            - sleep 10000
       - name: step_3
         type: Bash
         configuration:
