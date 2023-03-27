@@ -96,6 +96,8 @@ pipelines:
           onExecute:
             - echo "step_1"
             - echo "Running " $pipeline_name "|" $step_name > $shared_workspace/myoutput.txt
+            - echo $shared_workspace
+            - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
       - name: step_2
         type: Bash
@@ -106,6 +108,8 @@ pipelines:
         execution:
           onExecute:
             - echo "step_2"
+            - echo $shared_workspace
+            - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
       - name: step_3
         type: Bash
