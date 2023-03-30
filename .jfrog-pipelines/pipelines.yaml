@@ -1,9 +1,3 @@
-resources:
-  - name: custom_git
-    type: GitRepo
-    configuration:
-      gitProvider: git
-      path: ChaitanyaVootla/customYaml
 pipelines:
   - name: affinity
     steps:
