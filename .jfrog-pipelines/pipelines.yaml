@@ -5,87 +5,6 @@ resources:
       gitProvider: git
       path: ChaitanyaVootla/customYaml
 pipelines:
-  - name: mixed
-    steps:
-      # - name: autoImage
-      #   type: Bash
-      #   configuration:
-      #     inputResources:
-      #       - name: custom_git
-      #     runtime:
-      #       type: image
-      #       image:
-      #         auto:
-      #           language: node
-      #           version: "16"
-      #   execution:
-      #     onExecute:
-      #       - node -v
-      # - name: customNodeImage
-      #   type: Bash
-      #   configuration:
-      #     inputResources:
-      #       - name: custom_git
-      #     runtime:
-      #       type: image
-      #       image:
-      #         custom:
-      #           name: node
-      #           tag: latest
-      #   execution:
-      #     onExecute:
-      #       - node -v
-      # - name: go_build
-      #   type: GoBuild
-      #   configuration:
-      #     inputResources:
-      #       - name: custom_git
-      #     sourceLocation: .
-      #     resolverRepo: go-virtual
-      #     noRegistry: true
-      #     integrations:
-      #       - name: art
-      - name: npm_build
-        type: NpmBuild
-        configuration:
-          repositoryName: npm-virtual
-          sourceLocation: .
-          integrations:
-            - name:  art
-          inputResources:
-            - name: custom_git
-  - name: customNodeImage
-    configuration:
-      environmentVariables:
-        readOnly:
-          node_version: "14.21.3"
-    steps:
-      - name: customNodeImage
-        type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              custom:
-                name: node
-                tag: 14.21.3
-        execution:
-          onExecute:
-            - node -v
-  - name: ubuntuLatest
-    steps:
-      - name: customUbuntuImage
-        type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              custom:
-                name: ubuntu
-                tag: bionic
-        execution:
-          onExecute:
-            - node -v
   - name: affinity
     steps:
       - name: step_1
@@ -121,20 +40,34 @@ pipelines:
         execution:
           onExecute:
             - echo "step_3"
-  - name: testSimple_custom_1
+  - name: non_affinity
     steps:
-      - name: testSimple
+      - name: step_1
         type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              custom:
-                name: releases-docker.jfrogdev.org/docker/jfrog/pipelines-u18node
-                tag: "16"
-                sourceRepository: docker
         execution:
           onExecute:
-            - docker pull releases-docker.jfrog.io/jfrog/pipelines-u18node:16
-            - echo "executing step 4..."
-            - sleep 60
+            - echo "step_1"
+            - echo "Running " $pipeline_name "|" $step_name > $shared_workspace/myoutput.txt
+            - echo $shared_workspace
+            - ls -la $shared_workspace
+            - cat $shared_workspace/myoutput.txt
+            - docker images
+      - name: step_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - echo "step_2"
+            - echo $shared_workspace
+            - ls -la $shared_workspace
+            - cat $shared_workspace/myoutput.txt
+      - name: step_3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_2
+        execution:
+          onExecute:
+            - echo "step_3"
