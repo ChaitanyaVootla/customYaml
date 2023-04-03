@@ -12,7 +12,7 @@ pipelines:
             - echo $shared_workspace
             - ls -la $shared_workspace
             - cat $shared_workspace/myoutput.txt
-            - docker images
+            # - docker images
       - name: step_2
         type: Bash
         configuration:
