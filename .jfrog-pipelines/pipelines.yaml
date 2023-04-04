@@ -65,3 +65,21 @@ pipelines:
         execution:
           onExecute:
             - echo "step_3"
+      - name: matrix_test
+        type: Matrix
+        configuration:
+          inputSteps:
+            - name: step_2
+        stepletMultipliers:
+          environmentVariables:
+            - animal:    dog
+              mineral:   copper
+              vegetable: carrot
+            - animal:    goat
+              mineral:   iron
+              vegetable: broccoli
+            - animal:    lizard
+              mineral:   lead
+        execution:
+          onExecute:
+            - echo "matrix_test"
