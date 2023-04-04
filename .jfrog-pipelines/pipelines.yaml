@@ -33,7 +33,7 @@ pipelines:
         execution:
           onExecute:
             - echo "step_3"
-  - name: failling_affinity
+  - name: failing_affinity
     steps:
       - name: step_1
         type: Bash
